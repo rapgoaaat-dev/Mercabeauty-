@@ -3,87 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercabeauty — منتجات التجميل والعناية بالمغرب</title>
+    <title>Mercabeauty — منتجات العناية والتجميل الإسبانية بالمغرب</title>
     <style>
         :root {
-            --primary: #d81b60;
-            --primary-dark: #ad1457;
+            --primary: #e91e63;
+            --primary-dark: #c2185b;
             --secondary: #fce4ec;
             --accent: #25d366;
-            --bg: #fffafb;
+            --accent-dark: #128c7e;
+            --bg: #fafafa;
             --card-bg: #ffffff;
-            --text: #2c3e50;
-            --text-light: #666;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
             background-color: var(--bg);
-            color: var(--text);
+            color: var(--text-main);
             line-height: 1.6;
-            padding-bottom: 70px;
+            padding-bottom: 90px;
+        }
+
+        .top-bar {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: white;
+            text-align: center;
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
         }
 
         header {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
             padding: 15px 20px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        header h1 {
-            color: var(--primary);
+        .brand-logo {
             font-size: 1.8rem;
-            letter-spacing: 1px;
-            font-weight: 800;
+            font-weight: 900;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        header p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-top: 3px;
+        .brand-subtitle {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 15px;
         }
 
         .hero {
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-            padding: 25px 15px;
+            background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 100%);
+            border-radius: var(--radius);
+            padding: 30px 20px;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #f8bbd0;
+            box-shadow: var(--shadow);
         }
 
         .hero h2 {
             color: var(--primary-dark);
-            font-size: 1.3rem;
-            margin-bottom: 5px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
         }
 
         .hero p {
             color: #4a148c;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
+            margin-bottom: 15px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 15px;
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .hero-feature-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 25px;
         }
 
         .section-title {
-            text-align: center;
-            margin: 20px 0 15px;
-            color: var(--primary);
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.3rem;
+            color: var(--text-main);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            margin: 6px auto 0;
+            border-radius: 2px;
         }
 
         .products-grid {
@@ -94,45 +145,75 @@
 
         @media (min-width: 600px) {
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
                 gap: 20px;
             }
         }
 
         .product-card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid #f3f4f6;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid #f8bbd044;
+        }
+
+        .product-image-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 120%; /* Vertical Card Style */
+            background-color: #f9fafb;
+            overflow: hidden;
+        }
+
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .product-badge {
-            background-color: var(--secondary);
-            color: var(--primary);
-            font-size: 0.75rem;
-            padding: 3px 8px;
-            border-radius: 10px;
-            align-self: flex-start;
-            margin-bottom: 8px;
-            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(233, 30, 99, 0.9);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+
+        .product-content {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .product-title {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: #333;
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            line-height: 1.3;
         }
 
         .product-desc {
-            font-size: 0.85rem;
-            color: var(--text-light);
+            font-size: 0.78rem;
+            color: var(--text-muted);
             margin-bottom: 12px;
             flex-grow: 1;
+        }
+
+        .product-footer {
+            margin-top: auto;
         }
 
         .btn-whatsapp {
@@ -141,8 +222,8 @@
             text-decoration: none;
             text-align: center;
             padding: 10px;
-            border-radius: 8px;
-            font-weight: bold;
+            border-radius: 10px;
+            font-weight: 700;
             font-size: 0.85rem;
             display: flex;
             align-items: center;
@@ -150,128 +231,259 @@
             gap: 6px;
         }
 
-        .delivery-card {
+        .info-card {
             background: white;
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 12px;
+            margin-top: 35px;
+            padding: 25px 20px;
+            border-radius: var(--radius);
             text-align: center;
-            border: 1px dashed var(--primary);
+            box-shadow: var(--shadow);
+            border: 2px dashed #f8bbd0;
         }
 
-        .delivery-card h3 {
-            color: var(--primary);
-            margin-bottom: 8px;
+        .info-card h3 {
+            color: var(--primary-dark);
             font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .phone-num {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--primary);
+            direction: ltr;
         }
 
         footer {
             text-align: center;
             margin-top: 30px;
-            color: #888;
+            padding: 20px 0;
+            color: var(--text-muted);
             font-size: 0.8rem;
         }
 
         .contact-btn-floating {
             position: fixed;
-            bottom: 15px;
-            left: 15px;
+            bottom: 20px;
+            left: 20px;
             background-color: var(--accent);
             color: white;
             padding: 12px 20px;
-            border-radius: 30px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
             z-index: 1000;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid white;
         }
     </style>
 </head>
 <body>
 
+    <div class="top-bar">
+        🚚 التوصيل السريع لجميع المدن المغربية والدفع عند الاستلام!
+    </div>
+
     <header>
-        <h1>Mercabeauty 🌸</h1>
-        <p>منتجات العناية والتجميل الإسبانية بالمغرب 🇲🇦</p>
+        <div class="brand-logo">
+            <span>🌸</span> Mercabeauty
+        </div>
+        <div class="brand-subtitle">منتجات العناية والتجميل الإسبانية Mercadona بالمغرب 🇲🇦</div>
     </header>
 
-    <section class="hero">
-        <h2>مرحباً بكم في متجر Mercabeauty</h2>
-        <p>جودة عالية وتوصيل سريع لجميع المدن المغربية 🚚</p>
-    </section>
-
     <div class="container">
-        <h2 class="section-title">🛍️ منتجاتنا المميزة</h2>
-        
-        <div class="products-grid">
-            <div class="product-card">
-                <span class="product-badge">عناية بالشعر</span>
-                <h3 class="product-title">زيت أركان / زيت الخروع</h3>
-                <p class="product-desc">عناية مغذية ومقوية للشعر، الحواجب والرموش.</p>
-                <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20زيت%20الأركان/الخروع" class="btn-whatsapp" target="_blank">
-                    💬 للطلب عبر الواتساب
-                </a>
-            </div>
 
-            <div class="product-card">
-                <span class="product-badge">عناية بالقدمين</span>
-                <h3 class="product-title">كريم يوريا Pure Urea 10%</h3>
-                <p class="product-desc">ترطيب مكثف وعلاج فعال للأقدام الجافة والمتشاطئة.</p>
-                <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20كريم%20اليوريا%2010%" class="btn-whatsapp" target="_blank">
-                    💬 للطلب عبر الواتساب
-                </a>
+        <section class="hero">
+            <h2>مرحباً بكم في متجر Mercabeauty</h2>
+            <p>أجود منتجات Mercadona & Deliplus الإسبانية الأصلية بين يديك</p>
+            <div class="hero-features">
+                <span class="hero-feature-item">✨ منتجات أصلية 100%</span>
+                <span class="hero-feature-item">📦 الدفع عند الاستلام</span>
+                <span class="hero-feature-item">💬 طلب مباشر عبر واتساب</span>
             </div>
+        </section>
 
-            <div class="product-card">
-                <span class="product-badge">عناية بالقدمين</span>
-                <h3 class="product-title">جل المنتول المنعش</h3>
-                <p class="product-desc">مهدئ فورى وإحساس بالانتعاش للأرجل المتعبة.</p>
-                <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20جل%20المنتول" class="btn-whatsapp" target="_blank">
-                    💬 للطلب عبر الواتساب
-                </a>
-            </div>
-
-            <div class="product-card">
-                <span class="product-badge">تساقط الشعر</span>
-                <h3 class="product-title">لوشن تساقط الشعر</h3>
-                <p class="product-desc">علاج مقوي لتحفيز نمو الشعر والحد من التساقط.</p>
-                <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20لوشن%20تساقط%20الشعر" class="btn-whatsapp" target="_blank">
-                    💬 للطلب عبر الواتساب
-                </a>
-            </div>
-
-            <div class="product-card">
-                <span class="product-badge">نظافة وعناية</span>
-                <h3 class="product-title">جل الاستحمام والشامبو</h3>
-                <p class="product-desc">تنظيف لطيف مع روائح زكية وترطيب تدوم طويلاً.</p>
-                <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20جل%20الاستحمام/الشامبو" class="btn-whatsapp" target="_blank">
-                    💬 للطلب عبر الواتساب
-                </a>
-            </div>
-
-            <div class="product-card">
-                <span class="product-badge">عطور ومنعشات</span>
-                <h3 class="product-title">عطور ومزيلات العرق</h3>
-                <p class="product-desc">روائح راقية وحماية يدوم مفعولها طول اليوم.</p>
-                <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20العطور/مزيلات%20العرق" class="btn-whatsapp" target="_blank">
-                    💬 للطلب عبر الواتساب
-                </a>
-            </div>
+        <div class="section-header">
+            <h2 class="section-title">🛍️ منتجاتنا المميزة</h2>
         </div>
 
-        <div class="delivery-card">
-            <h3>🚚 التوصيل لجميع المدن المغربية</h3>
-            <p>اطلب منتجك الآن عبر الواتساب مباشرة، والدفع عند الاستلام.</p>
-            <p style="margin-top: 5px; font-weight: bold; color: var(--primary);" dir="ltr">📱 +212 776-459732</p>
+        <div class="products-grid">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image-wrap">
+                    <span class="product-badge">ترطيب قبل الاستحمام</span>
+                    <img class="product-image" src="https://images.unsplash.com/photo-1608248597260-23631024e883?auto=format&fit=crop&w=500&q=80" alt="زيت الروزماري Romero">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">زيت الروزماري Romero 100% طبيعي</h3>
+                    <p class="product-desc">ترطيب البشرة قبل الاستحمام بهذا الزيت الطبيعي 100%، غزال بزاف لتهدئة وتغذية الجلد.</p>
+                    <div class="product-footer">
+                        <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20زيت%20الروزماري%20Romero" class="btn-whatsapp" target="_blank">
+                            💬 اطلب عبر الواتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image-wrap">
+                    <span class="product-badge">صابون طبيعي</span>
+                    <img class="product-image" src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?auto=format&fit=crop&w=500&q=80" alt="صابونة الجليسرين Glicerina">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">صابونة الجليسرين Glicerina 100%</h3>
+                    <p class="product-desc">صحية للوجه والجسم، ماكتنشفش ومفيدة لحب الشباب والخيار الأفضل للبشرة الحساسة.</p>
+                    <div class="product-footer">
+                        <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20صابونة%20الجليسرين" class="btn-whatsapp" target="_blank">
+                            💬 اطلب عبر الواتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image-wrap">
+                    <span class="product-badge">تقشير الجسم</span>
+                    <img class="product-image" src="https://images.unsplash.com/photo-1567928256589-2dd56743826f?auto=format&fit=crop&w=500&q=80" alt="مقشر الجسم بالكوكو Exfoliante Coco">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">مقشر الجسم بالكوكو Exfoliante Coco</h3>
+                    <p class="product-desc">مقشر الكوكو الروعة لتقشير وترطيب الجسم وإزالة الخلايا الميتة برائحة الكوكو الزكية.</p>
+                    <div class="product-footer">
+                        <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20مقشر%20الكوكو" class="btn-whatsapp" target="_blank">
+                            💬 اطلب عبر الواتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image-wrap">
+                    <span class="product-badge">جيل دوش منعش</span>
+                    <img class="product-image" src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80" alt="جيل دوش الرمان Granada & Frutos Silvestres">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">جيل دوش الرمان والفواكه</h3>
+                    <p class="product-desc">جيل دوش بالرمان والفواكه الحمراء، ريحة غزالة ومنعشة كاتبقى فـ الجسم.</p>
+                    <div class="product-footer">
+                        <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20جيل%20دوش%20الرمان" class="btn-whatsapp" target="_blank">
+                            💬 اطلب عبر الواتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image-wrap">
+                    <span class="product-badge">ترطيب بعد الدوش</span>
+                    <img class="product-image" src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=500&q=80" alt="زيوت الترطيب Almends & Aloe Vera">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">زيوت الترطيب (اللوز / الألوفيرا)</h3>
+                    <p class="product-desc">زيوت طبيعية للترطيب بعد الاستحمام، ريحة فنة وترطيب عميق للبشرة.</p>
+                    <div class="product-footer">
+                        <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20زيوت%20الترطيب" class="btn-whatsapp" target="_blank">
+                            💬 اطلب عبر الواتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image-wrap">
+                    <span class="product-badge">عطر للشعر والجسم</span>
+                    <img class="product-image" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=500&q=80" alt="معطر Amatista Glow بالفراولة">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">معطر Amatista Glow بالفراولة</h3>
+                    <p class="product-desc">معطر الشعر والجسم برائحة الفراولة والمسك الرائعة جداً وثباتية عالية.</p>
+                    <div class="product-footer">
+                        <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20معطر%20Amatista%20Glow" class="btn-whatsapp" target="_blank">
+                            💬 اطلب عبر الواتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image-wrap">
+                    <span class="product-badge">عطور أنثوية</span>
+                    <img class="product-image" src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=500&q=80" alt="عطور Deliplus بتصميم الورود">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">عطر Deliplus الحلو والأنثوي</h3>
+                    <p class="product-desc">عطر برائحة حلوة وفنونة بزاف بتصميم غطاء وردة لطيف وجميل.</p>
+                    <div class="product-footer">
+                        <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20العطر%20الأنيق" class="btn-whatsapp" target="_blank">
+                            💬 اطلب عبر الواتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-image-wrap">
+                    <span class="product-badge">إزالة شعر الوجه</span>
+                    <img class="product-image" src="https://images.unsplash.com/photo-1556228722-d1191e3f71c4?auto=format&fit=crop&w=500&q=80" alt="كريم إزالة شعر الوجه Depil Facial">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">كريم Depil Facial لإزالة شعر الوجه</h3>
+                    <p class="product-desc">كريم يهنيك من الشعر الزائد بالوجه للبشرة الحساسة مع بلسم مهدئ بعد الإزالة.</p>
+                    <div class="product-footer">
+                        <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20كريم%20Depil%20Facial" class="btn-whatsapp" target="_blank">
+                            💬 اطلب عبر الواتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-card">
+                <div class="product-image-wrap">
+                    <span class="product-badge">تغذية البشرة</span>
+                    <img class="product-image" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80" alt="Crema Aceite de Olive">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">كريم مغذي بزيت الزيتون</h3>
+                    <p class="product-desc">كريم مغذي للبشرة بزيت الزيتون، 97% من المكونات ديالها من أصل طبيعي.</p>
+                    <div class="product-footer">
+                        <a href="https://wa.me/212776459732?text=السلام%20عليكم%20Mercabeauty،%20أريد%20طلب%20كريم%20زيت%20الزيتون" class="btn-whatsapp" target="_blank">
+                            💬 اطلب عبر الواتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="info-card">
+            <h3>🚚 خدمة التوصيل لجميع المدن المغربية</h3>
+            <p>اختر منتجاتك واضغط على زر الواتساب لإرسال الطلب مباشرة. الدفع عند الاستلام.</p>
+            <div class="phone-num">+212 776-459732</div>
         </div>
 
         <footer>
             <p>© 2026 Mercabeauty — جميع الحقوق محفوظة.</p>
         </footer>
+
     </div>
 
     <a href="https://wa.me/212776459732" class="contact-btn-floating" target="_blank">
-        💬 تواصل معنا واتساب
+        <span>💬</span> تواصل معنا
     </a>
 
 </body>
